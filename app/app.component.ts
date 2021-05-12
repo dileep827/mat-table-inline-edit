@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {DataSource} from '@angular/cdk/collections';
-import {Observable, BehaviorSubject, of} from 'rxjs';
+import { Component } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -8,13 +8,15 @@ import {Observable, BehaviorSubject, of} from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  displayedColumns = ['name', 'symbol', 'comment1'];
+  displayedColumns = ['name', 'symbol', 'comment'];
   dataSource = new ExampleDataSource(initialData);
 
   update(el: Element, comment: string) {
-    if (comment == null) { return; }
+    if (comment == null) {
+      return;
+    }
     // copy and mutate
-    const copy = this.dataSource.data().slice()
+    const copy = this.dataSource.data().slice();
     el.comment = comment;
     this.dataSource.update(copy);
   }
@@ -27,26 +29,26 @@ export interface Element {
 }
 
 const initialData: Element[] = [
-  {name: 'Hydrogen', symbol: 'H'},
-  {name: 'Helium', symbol: 'He'},
-  {name: 'Lithium', symbol: 'Li'},
-  {name: 'Beryllium', symbol: 'Be'},
-  {name: 'Boron', symbol: 'B'},
-  {name: 'Carbon', symbol: 'C'},
-  {name: 'Nitrogen', symbol: 'N'},
-  {name: 'Oxygen', symbol: 'O'},
-  {name: 'Fluorine', symbol: 'F'},
-  {name: 'Neon', symbol: 'Ne'},
-  {name: 'Sodium', symbol: 'Na'},
-  {name: 'Magnesium', symbol: 'Mg'},
-  {name: 'Aluminum', symbol: 'Al'},
-  {name: 'Silicon', symbol: 'Si'},
-  {name: 'Phosphorus', symbol: 'P'},
-  {name: 'Sulfur', symbol: 'S'},
-  {name: 'Chlorine', symbol: 'Cl'},
-  {name: 'Argon', symbol: 'Ar'},
-  {name: 'Potassium', symbol: 'K'},
-  {name: 'Calcium', symbol: 'Ca'},
+  { name: 'Hydrogen', symbol: 'H' },
+  { name: 'Helium', symbol: 'He' },
+  { name: 'Lithium', symbol: 'Li' },
+  { name: 'Beryllium', symbol: 'Be' },
+  { name: 'Boron', symbol: 'B' },
+  { name: 'Carbon', symbol: 'C' },
+  { name: 'Nitrogen', symbol: 'N' },
+  { name: 'Oxygen', symbol: 'O' },
+  { name: 'Fluorine', symbol: 'F' },
+  { name: 'Neon', symbol: 'Ne' },
+  { name: 'Sodium', symbol: 'Na' },
+  { name: 'Magnesium', symbol: 'Mg' },
+  { name: 'Aluminum', symbol: 'Al' },
+  { name: 'Silicon', symbol: 'Si' },
+  { name: 'Phosphorus', symbol: 'P' },
+  { name: 'Sulfur', symbol: 'S' },
+  { name: 'Chlorine', symbol: 'Cl' },
+  { name: 'Argon', symbol: 'Ar' },
+  { name: 'Potassium', symbol: 'K' },
+  { name: 'Calcium', symbol: 'Ca' }
 ];
 
 /**
@@ -56,7 +58,6 @@ const initialData: Element[] = [
  * we return a stream that contains only one set of data that doesn't change.
  */
 export class ExampleDataSource extends DataSource<any> {
-
   private dataSubject = new BehaviorSubject<Element[]>([]);
 
   data() {
